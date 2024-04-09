@@ -1,5 +1,6 @@
 <script setup>
-
+import { ref } from "vue";
+const isLoggedIn = ref(!!localStorage.getItem('token'));
 </script>
 
 <template>
@@ -17,7 +18,21 @@
                     <li class="nav-item">
                         <RouterLink class="nav-link" :class="{ active: $route.path === '/about'}" to="/about">About</RouterLink>
                     </li>
+                    <li class="nav-item">
+                        <RouterLink class="nav-link" :class="{ active: $route.path === '/movies'}" to="/movies">Movies</RouterLink>
+                    </li>
+                    <li class="nav-item">
+                        <RouterLink class="nav-link" :class="{ active: $route.path === '/movies/create'}" to="/movies/create">Add Movie</RouterLink>
+                    </li>
                 </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li v-if="isLoggedIn" class="nav-item">
+                        <RouterLink class="nav-link" :class="{ active: $route.path === '/logout'}" to="/logout">Logout</RouterLink>
+                    </li>
+                    <li v-else class="nav-item">
+                        <RouterLink class="nav-link" :class="{ active: $route.path === '/login'}" to="/login">Login</RouterLink>
+                    </li>
+  </ul>
             </div>
         </div>
     </nav>
