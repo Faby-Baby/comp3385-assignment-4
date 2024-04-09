@@ -32,7 +32,7 @@ const isLoggedIn = ref(!!localStorage.getItem('token'));
                     <li v-else class="nav-item">
                         <RouterLink class="nav-link" :class="{ active: $route.path === '/login'}" to="/login">Login</RouterLink>
                     </li>
-  </ul>
+                </ul>
             </div>
         </div>
     </nav>
